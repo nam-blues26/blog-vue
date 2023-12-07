@@ -1,0 +1,123 @@
+.form-container {
+    background-image: url("../img/background-form.jpg");
+    background-repeat    : no-repeat;
+    background-size      : cover;
+    display              : flex;
+    align-items          : center;
+    height               : 100vh;
+    background-color     : #dfe4ea;
+    /* Màu nền khi ảnh không load */
+}
+
+.form-view {
+    width               : 100%;
+    /* Thay đổi chiều rộng cho thiết bị di động */
+    background-color    : #dfe4ea;
+    border              : 1px solid #ccc;
+    border-radius       : 10px;
+    overflow            : hidden;
+    box-shadow          : 0 0 10px rgba(0, 0, 0, 0.6);
+    justify-content     : center;
+    align-items         : center;
+    margin              : auto;
+    display             : flex;
+}
+
+.left-content {
+    flex    : 1;
+}
+
+.right-content {
+    flex       : 1;
+    padding    : 30px 30px;
+    align-self: center;
+}
+
+.form-signi, .form-login {
+    display           : flex;
+    flex-direction    : column;
+}
+
+.left-content img {
+    width         : 100%;
+    height        : 100%;
+    object-fit    : cover;
+}
+
+.form-group {
+    width            : 80%;
+    margin           : 0 auto;
+    margin-bottom    : 20px;
+}
+
+
+.form-group.input {
+
+    border           : none;
+    border-bottom    : 1px solid #ccc;
+    border-radius    : 10px;
+    padding          : 10px;
+    box-sizing       : border-box;
+    margin-bottom    : 5px;
+}
+
+.form-signin button,
+.form-login button {
+    margin: 0 34%;
+}
+
+/* Thiết bị di động, hiển thị chiều dọc */
+@media only screen and (max-width: 320px) {
+    .left-content {
+        display    : none;
+    }
+
+    .form-view {
+        width    : 100%;
+    }
+}
+
+/* Thiết bị di động, hiển thị chiều ngang */
+@media only screen and (min-width: 321px) and (max-width: 480px) {
+    .form-view {
+        width    : 80%;
+    }
+
+    .left-content {
+        display    : none;
+    }
+}
+
+/* Máy tính bảng, hiển thị chiều dọc */
+@media only screen and (min-width: 481px) and (max-width: 600px) {
+    .form-view {
+        width    : 70%;
+    }
+
+    .left-content {
+        display    : none;
+    }
+}
+
+/* Máy tính bảng loại to, hiển thị chiều dọc */
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+    .form-view {
+        width    : 60%;
+        /* Giảm chiều rộng để không chiếm hết màn hình */
+    }
+}
+
+/* Máy tính bảng loại to, hiển thị chiều ngang */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .form-view {
+        width    : 50%;
+        /* Giảm chiều rộng để không chiếm hết màn hình */
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .form-view {
+        width    : 50%;
+        /* Giảm chiều rộng để không chiếm hết màn hình */
+    }
+}

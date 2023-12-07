@@ -1,47 +1,58 @@
 <template>
-  <div>
-    <h2>Đăng Ký</h2>
-    <form @submit.prevent="register">
-      <label for="fullname">Họ và Tên:</label>
-      <input type="text" id="full_name" v-model="fullName" required>
-
-      <label for="username">Tên người dùng:</label>
-      <input type="text" id="username" v-model="username" required>
-
-      <label for="password">Mật khẩu:</label>
-      <input type="password" id="password" v-model="password" required>
-
-      <label for="repassword">Nhập lại mật khẩu:</label>
-      <input type="password" id="repassword" v-model="repassword" required>
-
-      <button type="submit">Đăng Ký</button>
-    </form>
-  </div>
+    <div class="form-container">
+        <div class="form-view">
+            <div class="left-content">
+                <!-- Hình ảnh bên trái -->
+                <img src="../assets/img/img-form-register.jpeg" alt="Register Image" class="img-fluid" />
+            </div>
+            <!-- Hình ảnh và Form đăng ký -->
+            <div class="right-content">
+                <form @submit.prevent="register" class="form-signin">
+                    <h2 class="h1 mb-3 fw-bold text-center">REGISTER</h2>
+                    <div class="form-group">
+                        <input type="text" v-model="full_name" class="form-control" placeholder="Full Name" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" v-model="username" class="form-control" placeholder="Username" required />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" v-model="password" class="form-control" placeholder="Password" required />
+                    </div>
+                    <div class="form-group">
+                                                <p class="text-center">Already have an account?<router-link to="/login" class="">Login</router-link></p>
+                                        </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">DONE</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
 </template>
-
+  
 <script>
 export default {
-  data() {
-    return {
-      fullName: '',
-      username: '',
-      password: '',
-      repassword: '',
-    };
-  },
-  methods: {
-    register() {
-      // Xử lý logic đăng ký, có thể gọi API ở đây
-      console.log('Đã nhấn nút Đăng Ký');
-      console.log('Họ và Tên:', this.fullName);
-      console.log('Tên người dùng:', this.username);
-      console.log('Mật khẩu:', this.password);
-      console.log('Nhập lại mật khẩu:', this.repassword);
+    data() {
+        return {
+            full_name:"",
+            username: "",
+            password: "",
+        };
     },
-  },
+    methods: {
+        register() {
+            // Xử lý logic đăng ký, có thể gọi API ở đây
+            console.log("Đã nhấn nút Đăng Ký");
+            console.log("tên", this.full_name);
+            console.log("Tên người dùng:", this.username);
+            console.log("Mật khẩu:", this.password);
+        },
+    },
 };
 </script>
-
+  
 <style scoped>
-/* Add your component styles here */
+
 </style>
+  
