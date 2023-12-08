@@ -32,6 +32,10 @@
 </template>
   
 <script>
+import AuthService from "@/services/AuthService"
+import Swal from 'sweetalert2';
+import router from '@/router';
+
 export default {
     data() {
         return {
@@ -41,12 +45,23 @@ export default {
         };
     },
     methods: {
-        register() {
-            // Xử lý logic đăng ký, có thể gọi API ở đây
-            console.log("Đã nhấn nút Đăng Ký");
-            console.log("tên", this.full_name);
-            console.log("Tên người dùng:", this.username);
-            console.log("Mật khẩu:", this.password);
+        async register() {
+            try {
+                const response = await AuthService.register(this.full_name, this.username, this.password);
+                // const response = true
+                console.log('Đăng ký thành công:', response);
+                if (response == true) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Đăng ký thành công!',
+                    }).then(() => {
+                        // Chuyển hướng đến trang /login sau khi nhấp vào nút "OK" trên thông báo
+                        router.push('/login');
+                    });
+                }
+            } catch (error) {
+                console.error('Đăng ký thất bại:', error.message);
+            }
         },
     },
 };

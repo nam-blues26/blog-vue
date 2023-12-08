@@ -4,7 +4,8 @@
     <div class="banner">
         <img src="../assets/img/banner.jpg" alt="Banner">
     </div>
-    <ListBlogComponent/>
+    
+    <ListBlogComponent :postList="PostList" :textHeader="textHeader"/>
     <FooterComponent/>
 </div>
    
@@ -14,13 +15,39 @@
 import NavbarComponent from '@/components/NavbarComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 import ListBlogComponent from '@/components/ListBlogComponent.vue';
+import BlogService from "@/services/BlogService";
+import { API_BASE_URL } from "@/config";
 export default {
-
+    data() {
+    return {
+      textHeader: "NEW EPISODES",
+      PostList: [
+      ],
+    };
+  },
     components: {
         NavbarComponent,
         FooterComponent,
         ListBlogComponent,
+    },
+    async created() {
+    // Gọi API để lấy danh sách cate
+    try {
+      const posts = await BlogService.getList();
+      this.PostList = posts.map((p) => ({
+        id: p.id,
+        title: p.title,
+        content: p.content,
+        image:API_BASE_URL+"/post/image/"+p.image,
+        slug: p.slug
+        // Thêm các trường khác nếu cần
+      }));
+      console.log(this.PostList);
+
+    } catch (error) {
+      console.error("Error fetching blog list:", error);
     }
+  },
 }
 </script>
 
@@ -29,7 +56,7 @@ export default {
   background-color: #293335;
 }
 .banner{
-    padding: 0 20%;
+    padding: 0 18%;
 }
 .banner img{
     width: 100%;

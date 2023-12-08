@@ -7,7 +7,7 @@
   
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" @click="toggleNavbar">
-          <span class="material-icons">
+          <span class="material-icons text-white">
             reorder
           </span>
         </button>
@@ -20,44 +20,58 @@
           <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Blog
           </a>
-          <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-            <li><router-link to="/" class="dropdown-item ">Home</router-link></li>
-            <li><router-link to="/" class="dropdown-item ">Home</router-link></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-          <li class="nav-item">
-            <router-link to="/about" class="nav-link text-white">About us</router-link>
+            <ul class="dropdown-menu " aria-labelledby="navbarDropdown" >
+              <li v-for="(cate, index) in categoryList" :key="index"><router-link :to="`/category/${cate.slug}`" class="dropdown-item ">{{ cate.name }}</router-link></li>
+            </ul>
           </li>
+            <li class="nav-item">
+              <router-link to="/about" class="nav-link text-white">About us</router-link>
+            </li>
           
-        </ul>
+          </ul>
   
-        <div class="navbar-nav  ml-auto">
-          <li class="nav-item">
-            <router-link to="/login" class="btn btn-outline-light mx-2">Login</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link to="/register" class="btn btn-outline-light">Register</router-link>
-          </li>
+          <div class="navbar-nav  ml-auto">
+            <li class="nav-item">
+              <router-link to="/login" class="btn btn-outline-light mx-2">Login</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/register" class="btn btn-outline-light">Register</router-link>
+            </li>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
   </template>
   
 <script>
+import CategoryService from '@/services/CategoryService';
 export default {
-    name: 'NavbarComponent',
-    data() {
-        return {
-            showNavbar: false,
-        };
-    },
-    methods: {
-        toggleNavbar() {
-            this.showNavbar = !this.showNavbar;
-        },
-    },
+  data() {
+    return {
+      showNavbar: false,
+      categoryList: [],
+    };
+  },
+  methods: {
+    toggleNavbar() {
+      this.showNavbar = !this.showNavbar
+    }
+  },
+  async created() {
+    // Gọi API để lấy danh sách cate
+    try {
+      const categories = await CategoryService.getList();
+      this.categoryList = categories.map((c) => ({
+        id: c.id,
+        name: c.name,
+        slug: c.slug
+        // Thêm các trường khác nếu cần
+      }));
+      console.log(this.categoryList);
+
+    } catch (error) {
+      console.error("Error fetching blog list:", error);
+    }
+  },
 };
 </script>
   

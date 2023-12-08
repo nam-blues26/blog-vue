@@ -1,58 +1,57 @@
 <template>
-        <div class="container mt-5 mb-5">
-          <div class="row">
-            <div class="col-md-6 pb-4" v-for="(card, index) in cardList" :key="index">
-              <div class="card">
-                <div class="card-image">
-                        <img :src="card.image" class="card-img-top" alt="Card Image">
+  <div class="container mt-5 mb-5">
+    <h2 class="text-header text-white mb-5 text-center">{{ textHeader }}</h2>
+    <div class="row">
+      <div class="col-md-6 pb-4" v-for="(post, index) in postList" :key="index">
+        <div class="card">
+          <div class="card-image">
+            <img :src="post.image" class="card-img-top" alt="Card Image">
 
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">{{ card.title }}</h5>
-                  <p class="card-text">{{ card.description }}</p>
-                  <router-link :to="`/details/${index}`" class="btn btn-custome d-flex align-items-center" style="width:fit-content;">
-                    <span>See More</span>
-                    <span class="material-icons ml-2">
-                      pan_tool_alt
-                    </span>
-                  </router-link>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content }}</p>
+            <router-link :to="`/blog/${post.slug}`" class="btn btn-custome d-flex align-items-center"
+              style="width:fit-content;">
+              <span>See More</span>
+              <span class="material-icons ml-2">
+                pan_tool_alt
+              </span>
+            </router-link>
           </div>
         </div>
-      </template>
+      </div>
+    </div>
+  </div>
+</template>
       
-      <script>
-      export default {
-        data() {
-          return {
-            cardList: [
-              {
-                title: 'Card 1',
-                description: 'Description for Card 1.',
-                image: 'path/to/image1.jpg',
-              },
-              {
-                title: 'Card 2',
-                description: 'Description for Card 2.',
-                image: 'path/to/image2.jpg',
-              },
-              {
-                title: 'Card 2',
-                description: 'Description for Card 2.',
-                image: 'path/to/image2.jpg',
-              },
-              // Add more cards as needed
-            ],
-          };
-        },
-      };
-      </script>
+<script>
+export default {
+  props:['postList','textHeader'],
+  data() {
+    
+  },
+  
+};
+</script>
       
-      <style scoped>
-        .card-image{
-                height: 300px;
-        }
-      </style>
+<style scoped>
+.card-image {
+  height: 300px;
+}
+
+.card-image img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-text {
+  margin-top: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #57606f;
+}
+</style>
       

@@ -2,7 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Register from '@/views/RegisterPage.vue';
 import Login from '@/views/LoginPage.vue';
 import Home from '@/views/HomePage.vue';
-import Detail from '@/views/DetailBlogPage.vue';
+import Category from '@/views/CategoryPage.vue';
+import Blog from '@/views/DetailBlogPage.vue';
+
 
 
 const routes = [
@@ -19,9 +21,12 @@ const routes = [
     component: Login,
   },
   {
-    path: '/details',
-    name: 'DetailPage',
-    component: Detail,
+    path: '/category/:slug',
+    component: Category,
+  },
+  {
+    path: '/blog/:slug',
+    component: Blog,
   },
 ];
 

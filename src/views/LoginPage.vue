@@ -30,6 +30,7 @@
 </template>
       
 <script>
+// import AuthService from "@/services/AuthService"
 export default {
         data() {
                 return {
@@ -38,11 +39,10 @@ export default {
                 };
         },
         methods: {
-                login() {
-                        // Xử lý logic đăng ký, có thể gọi API ở đây
-                        console.log("Đã nhấn nút Đăng Ký");
-                        console.log("Tên người dùng:", this.username);
-                        console.log("Mật khẩu:", this.password);
+        async login() {
+            // const response = await AuthService.login(this.full_name, this.username, this.password);
+            // Xử lý logic đăng nhập, có thể gọi API ở đây
+
                 },
         },
 };

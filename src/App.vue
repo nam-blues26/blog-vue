@@ -23,10 +23,20 @@ body{
   box-sizing: border-box;
 }
 
-ul.no-bullets {
+ul.no-bullets, ul {
   list-style-type: none; /* Remove bullets */
   padding: 0; /* Remove padding */
   margin: 0; /* Remove margins */
+}
+
+li{
+  list-style: none;
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+a{
+  text-decoration: none;
 }
 
 .material-icons{
@@ -39,7 +49,9 @@ ul.no-bullets {
     border-radius: 10px;
     transition: all 0.3s;
 }
-
+.text-header{
+  font-size: 3em;
+}
 .btn-custome:hover,
 .btn-custome:active{
   color: rgb(214, 71, 52);
