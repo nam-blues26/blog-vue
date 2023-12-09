@@ -18,13 +18,13 @@
       <div class="col-md-1"></div>
       <div class="col-md-3">
         <h3>Related Posts</h3>
-        <!-- <ul>
-          <li class="d-flex align-items-center">
+        <ul>
+          <li v-for="(blog, index) in Related" :key="index" class="d-flex align-items-center mt-3">
             <span class="material-icons">
 arrow_right
-</span><a href="https://oddly-podcast.com/podcast/immune/">Episode 22: Mùa đông đang tới</a>
+</span><router-link :to="`/blog/${blog.slug}`" >{{ blog.title }}</router-link>
           </li>
-        </ul> -->
+        </ul>
       </div>
     </div>
   </div>
@@ -32,7 +32,7 @@ arrow_right
   
 <script>
 export default {
-  props: ['DetailBlog'],
+  props: ['DetailBlog','Related'],
   data() {
 
   },

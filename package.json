@@ -13,6 +13,8 @@
     "ant-design-vue": "^4.0.7",
     "axios": "^1.6.2",
     "core-js": "^3.8.3",
+    "flowbite": "^2.2.0",
+    "flowbite-vue": "^0.1.1",
     "sweetalert2": "^11.10.1",
     "tinymce": "^6.8.1",
     "vue": "^3.2.13",

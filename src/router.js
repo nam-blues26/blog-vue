@@ -6,6 +6,7 @@ import Category from '@/views/CategoryPage.vue';
 import Blog from '@/views/DetailBlogPage.vue';
 import BlogListAdmin from '@/views/admin/BlogListAdminPage.vue';
 import AddBlogAdmin from '@/views/admin/AddBlogAdminPage.vue';
+import EditBlogAdmin from '@/views/admin/EditBlogAdminPage.vue';
 
 
 const routes = [
@@ -36,6 +37,10 @@ const routes = [
   {
     path: '/admin/add-blog',
     component: AddBlogAdmin,
+  },
+  {
+    path: '/admin/edit-blog/:slug',
+    component: EditBlogAdmin,
   },
 ];
 

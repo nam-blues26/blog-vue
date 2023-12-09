@@ -45,10 +45,15 @@ import Editor from '@tinymce/tinymce-vue'
                         <span class="input-group-text">Upload</span>
                       </div>
                     </div>
+                    <div>
+      <img v-if="selectedImage" :src="selectedImage" class="selected-image" alt="Selected Image">
+    </div>
                   </div>
+                  
                   <Editor api-key="no-api-key" :init="{
                     plugins: 'lists link image table code help wordcount'
-                  }" @change="handleChange" />
+                  }" v-model="content"
+                 />
                 </div>
 
                 <div class="card-footer">
@@ -81,6 +86,7 @@ export default {
   },
   data() {
     return {
+      selectedImage: null,
       domainImage: `${API_BASE_URL}/post/image/`,
       categoryList: [],
       title: '',
@@ -109,12 +115,20 @@ export default {
     }
   },
   methods: {
+    displayImage(file) {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        this.selectedImage = e.target.result;
+      };
+
+      reader.readAsDataURL(file);
+    },
     handleFileChange(event) {
       this.file = event.target.files[0];
-    },
-    handleChange(value) {
-      this.content = value.level.content;
-      // console.log('Changed', value);
+      if (this.file) {
+        this.displayImage(this.file);
+      }
     },
 
     async submitForm() {
@@ -154,5 +168,9 @@ export default {
   width: 150px;
   height: 100px;
   object-fit: cover;
+}
+.selected-image{
+  width: 200px;
+object-fit: contain;
 }
 </style>

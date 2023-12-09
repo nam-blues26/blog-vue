@@ -28,6 +28,14 @@ const BlogService = {
 			console.log(error);
 		}
 	},
+	getRelatedBlogBySlug: async (slug) => {
+		try {
+			const response = await axios.get(`${API_BASE_URL}/post/related/${slug}`);
+			return response.data;
+		} catch (error) {
+			console.log(error);
+		}
+	},
 	addBlog: async (title,description, category_id, content, file) => {
 		try {
 			const response = await apiClientWithToken.postForm(
@@ -40,6 +48,39 @@ const BlogService = {
 					file: file,
 				},
 				
+			);
+			return response;
+		} catch (error) {
+			return error;
+		}
+	},
+	updateBlogWithImage: async (id,title,description, category_id, content, file) => {
+		try {
+			const response = await apiClientWithToken.putForm(
+				`${API_BASE_URL}/post/update-with-image/${id}`,
+				{
+					title: title,
+					description:description,
+					category_id: category_id,
+					content: content,
+					file: file,
+				},
+			);
+			return response;
+		} catch (error) {
+			return error;
+		}
+	},
+	updateBlogWithoutImage: async (id,title,description, category_id, content) => {
+		try {
+			const response = await apiClientWithToken.putForm(
+				`${API_BASE_URL}/post/update-without-image/${id}`,
+				{
+					title: title,
+					description:description,
+					category_id: category_id,
+					content: content,
+				},
 			);
 			return response;
 		} catch (error) {

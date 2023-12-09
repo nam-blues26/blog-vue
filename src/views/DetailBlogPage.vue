@@ -1,6 +1,6 @@
 <template>
     <NavbarComponent />
-    <DetailComponent :DetailBlog="Blog"/>
+    <DetailComponent :DetailBlog="Blog" :Related="Related_Blog"/>
 
     <FooterComponent />
 </template>
@@ -16,6 +16,7 @@ export default {
     data() {
         return {
             Blog: {},
+            Related_Blog: []
         };
     },
     components: {
@@ -31,6 +32,8 @@ export default {
             try {
                 this.Blog = await BlogService.getBlogBySlug(this.$route.params.slug);
                 this.Blog.image = API_BASE_URL + "/post/image/" + this.Blog.image
+
+                this.Related_Blog = await BlogService.getRelatedBlogBySlug(this.$route.params.slug);
             } catch (error) {
                 console.error("Error fetching blog list:", error);
             }

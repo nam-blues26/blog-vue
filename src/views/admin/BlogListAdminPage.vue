@@ -36,9 +36,13 @@
                           <tbody>
                             <tr class="odd" v-for="(blog, index) in cate.postList" :key="index">
                               <td><img :src="domainImage+blog.image" class="card-img-top" alt="Card Image"></td>
-                              <td>{{ blog.title }}</td>
+                              <td class="fw-bolder">{{ blog.title }}</td>
                               <td>{{ blog.updated_at }}</td>
-                              <td></td>
+                              <td>
+                                <router-link :to="`/blog/${blog.slug}`" target="_blank" class="btn-admin btn btn-success">View</router-link>
+                                <router-link :to="`admin/edit-blog/${blog.slug}`" class="btn-admin btn btn-warning">Edit</router-link>
+                                <a href="" class="btn-admin btn btn-danger">Delete</a>
+                              </td>
                             </tr>
 
                           </tbody>
@@ -96,5 +100,9 @@ export default {
   width: 150px;
   height: 100px;
   object-fit: cover;
+}
+
+.btn-admin{
+  margin-left: 10px;
 }
 </style>
