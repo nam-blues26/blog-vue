@@ -58,6 +58,10 @@ a{
     background-color: #fff;
     border: 1px solid rgb(194, 76, 60);
 }
+.detail-content img{
+  width: 100%;
+  object-fit:contain;
+}
 
 /* Thiết bị di động, hiển thị chiều dọc */
 @media only screen and (max-width: 320px) {

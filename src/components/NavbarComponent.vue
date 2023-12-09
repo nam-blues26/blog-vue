@@ -34,9 +34,9 @@
             <li class="nav-item">
               <router-link to="/login" class="btn btn-outline-light mx-2">Login</router-link>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <router-link to="/register" class="btn btn-outline-light">Register</router-link>
-            </li>
+            </li> -->
           </div>
         </div>
       </nav>

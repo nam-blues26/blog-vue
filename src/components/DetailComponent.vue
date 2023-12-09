@@ -11,8 +11,8 @@
   <div class="container detail-blog">
     <div class="row">
       <div class="col-md-8">
-        <div class="detail-content">
-          <p>{{ DetailBlog.content }}</p>
+        <div class="detail-content" v-html="DetailBlog.content">
+ 
         </div>
       </div>
       <div class="col-md-1"></div>
@@ -52,7 +52,8 @@ export default {
 
 .blog-image img {
   width: 100%;
-  object-fit: fill;
+  object-fit: cover;
+  height: 70vh;
 }
 
 .image-overlay {

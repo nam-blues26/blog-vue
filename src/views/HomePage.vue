@@ -37,9 +37,10 @@ export default {
       this.PostList = posts.map((p) => ({
         id: p.id,
         title: p.title,
-        content: p.content,
+        description: p.description,
         image:API_BASE_URL+"/post/image/"+p.image,
-        slug: p.slug
+        slug: p.slug,
+        updated_at:p.updated_at
         // Thêm các trường khác nếu cần
       }));
       console.log(this.PostList);
@@ -61,5 +62,6 @@ export default {
 .banner img{
     width: 100%;
     object-fit: fill;
+    height: 70vh;
 }
 </style>

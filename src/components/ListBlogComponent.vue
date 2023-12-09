@@ -9,8 +9,9 @@
 
           </div>
           <div class="card-body">
-            <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.content }}</p>
+            <h5 class="card-title fs-4 fw-bolder">{{ post.title }}</h5>
+            <p class="card-text pt-1">{{ post.updated_at }}</p>
+            <p class="card-text pt-2">{{ post.description }}</p>
             <router-link :to="`/blog/${post.slug}`" class="btn btn-custome d-flex align-items-center"
               style="width:fit-content;">
               <span>See More</span>

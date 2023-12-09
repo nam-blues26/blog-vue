@@ -4,7 +4,8 @@ import Login from '@/views/LoginPage.vue';
 import Home from '@/views/HomePage.vue';
 import Category from '@/views/CategoryPage.vue';
 import Blog from '@/views/DetailBlogPage.vue';
-
+import BlogListAdmin from '@/views/admin/BlogListAdminPage.vue';
+import AddBlogAdmin from '@/views/admin/AddBlogAdminPage.vue';
 
 
 const routes = [
@@ -27,6 +28,14 @@ const routes = [
   {
     path: '/blog/:slug',
     component: Blog,
+  },
+  {
+    path: '/admin',
+    component: BlogListAdmin,
+  },
+  {
+    path: '/admin/add-blog',
+    component: AddBlogAdmin,
   },
 ];
 

@@ -1,7 +1,6 @@
 <template>
     <NavbarComponent />
     <DetailComponent :DetailBlog="Blog"/>
-    <div class="blog" style="height: 100vh;"></div>
 
     <FooterComponent />
 </template>
